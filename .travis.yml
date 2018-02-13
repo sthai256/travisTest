@@ -1,6 +1,13 @@
 os:
   - linux
 sudo: false
+android:
+  components:
+    - build-tools-22.0.1
+    - android-22
+    - extra
+    - addon
+    - sys-img-armeabi-v7a-android-22
 addons:
   apt:
     # Flutter depends on /usr/lib/x86_64-linux-gnu/libstdc++.so.6 version GLIBCXX_3.4.18
@@ -10,6 +17,10 @@ addons:
       - libstdc++6
       - fonts-droid
 before_script:
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
   - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
   - ./flutter/bin/flutter doctor
 script:

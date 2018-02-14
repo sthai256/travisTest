@@ -11,7 +11,6 @@ android:
     - build-tools-26.0.2
     - android-27
     - android-25
-    - android-24
     - android-22
     - extra-google-google_play_services
     - extra-google-m2repository
@@ -31,8 +30,6 @@ addons:
 before_install:
   - yes | sdkmanager "platforms;android-27"
 before_script:
-  - git clone https://github.com/flutter/flutter.git -b alpha-chq --depth 1
-  - ./flutter/bin/flutter doctor
   - wget http://services.gradle.org/distributions/gradle-3.5-bin.zip
   - unzip -qq gradle-3.5-bin.zip
   - export GRADLE_HOME=$PWD/gradle-3.5
@@ -41,10 +38,12 @@ before_script:
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+  - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
+  - ./flutter/bin/flutter doctor
 script:
-  - ./flutter/bin/flutter test
-  - ./flutter/bin/flutter drive ./test_driver/simple.dart
-  #- ./flutter/bin/flutter -v build apk
+  #- ./flutter/bin/flutter test
+  #- ./flutter/bin/flutter drive ./test_driver/simple.dart
+  - ./flutter/bin/flutter -v build apk
 
 cache:
   directories:

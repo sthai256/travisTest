@@ -1,4 +1,4 @@
-#FROM cirrusci/flutter:base
+FROM cirrusci/flutter:base
 
 ENV FLUTTER_HOME ${HOME}/sdks/flutter
 ENV FLUTTER_VERSION 0.1.1

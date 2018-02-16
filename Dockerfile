@@ -1,5 +1,7 @@
+FROM tracer0tong/android-emulator
+CMD ["adb", "devices"]
+
 FROM brianegan/flutter:v9
-#FROM tracer0tong/android-emulator
 
 # Set the working directory to /app
 WORKDIR /app

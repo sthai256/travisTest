@@ -1,15 +1,13 @@
-FROM tracer0tong/android-emulator
-CMD ["adb", "devices"]
+#FROM cirrusci/flutter:base
 
-FROM brianegan/flutter:v9
+ENV FLUTTER_HOME ${HOME}/sdks/flutter
+ENV FLUTTER_VERSION 0.1.1
 
-# Set the working directory to /app
-WORKDIR /app
+RUN git clone --branch v${FLUTTER_VERSION} https://github.com/flutter/flutter.git ${FLUTTER_HOME}
 
-# Copy the current directory contents into the container at /app
-ADD . /app
+ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
-# Define environment variable
-ENV NAME World
+# doctor
+RUN flutter doctor
 
 CMD ["flutter", "drive", "./test_driver/simple.dart"]

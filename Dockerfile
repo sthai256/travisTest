@@ -10,4 +10,4 @@ ADD . /app
 # Define environment variable
 ENV NAME World
 
-#CMD ["flutter", "flutter drive”]
+CMD ["flutter", "flutter drive”]

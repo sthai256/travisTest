@@ -19,6 +19,7 @@ before_script:
 #  - xcrun simctl list | grep "(Booted)"    # Just checking to see the right device is marked as booted....seems OK
 #  - travis_retry xcrun simctl openurl booted http://travis-ci.com  # Open a URL
 script:
+  - instruments -s devices
   - xcrun simctl list
 #  - ./flutter/bin/flutter drive test_driver/simple.dart
 cache:

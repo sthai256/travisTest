@@ -15,7 +15,7 @@ before_script:
   - ./flutter/bin/flutter doctor
   - export IOS_SIMULATOR_UDID=$(instruments -s devices | grep "iPhone 5s (10.1)" | sed -E 's/.*\[([0-9A-F-]+)\].*/\1/g')   # Get the iPhone 5s deviceid
   - open -b com.apple.iphonesimulator --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID  # Launch the iOS Simulator
-  - sleep 120  # Wait 120 seconds
+  - sleep 180  # Wait 120 seconds
   - xcrun simctl list | grep "(Booted)"    # Just checking to see the right device is marked as booted....seems OK
   - travis_retry xcrun simctl openurl booted http://travis-ci.com  # Open a URL
 script:

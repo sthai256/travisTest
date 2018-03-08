@@ -17,7 +17,7 @@ before_script:
   - brew install ios-deploy
   - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
   - ./flutter/bin/flutter doctor
-  - export IOS_SIMULATOR_UDID=$(instruments -s devices | grep "iPhone 5s (9.3)" | sed -E 's/.*\[([0-9A-F-]+)\].*/\1/g')   # Get the iPhone 5s deviceid
+  - export IOS_SIMULATOR_UDID=$(instruments -s devices | grep "iPhone 5s (10.2)" | sed -E 's/.*\[([0-9A-F-]+)\].*/\1/g')   # Get the iPhone 5s deviceid
   - echo $IOS_SIMULATOR_UDID
   - instruments -s devices
   - open -b com.apple.iphonesimulator --args -CurrentDeviceUDID $IOS_SIMULATOR_UDID  # Launch the iOS Simulator

@@ -15,8 +15,8 @@ before_script:
   - ./flutter/bin/flutter doctor
 script:
   - xcrun simctl list
-  - /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 0A710201-1FE3-47B0-813D-15AA63BE1C82
-  - ./flutter/bin/flutter test
+  - /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/Contents/MacOS/Simulator -CurrentDeviceUDID 0A710201-1FE3-47B0-813D-15AA63BE1C82 &
+  - ./flutter/bin/flutter drive test_driver/simple.dart
 cache:
   directories:
     - $HOME/.pub-cache
